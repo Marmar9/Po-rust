@@ -1,0 +1,39 @@
+[package]
+name = "rustls-example"
+version = "1.0.0"
+edition = "2021"
+
+[[bin]]
+name = "rustls-server"
+path = "src/main.rs"
+
+[dependencies]
+actix-web = { version = "4.4.0" , features = ["rustls-0_21"] }
+rustls = "0.21.9"
+
+env_logger = "0.10.1"
+log = "0.4.14"
+# Redis
+redis = {version = "0.23.3", features = ["tokio-comp"]}
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1.0.130", features = ["derive"] }
+serde_json = "1.0.68"
+uuid = {version = "1.6.1" , features = ["v4"]}
+# actix-files.workspace = true
+
+# env_logger.workspace = true
+# log.workspace = true
+# rustls.workspace = true
+rustls-pemfile = "1"
+
+
+[dev-dependencies]
+actix-rt = "2"
+
+[profile.dev]
+incremental = true
+
+
+[build]
+jobs = 6  # Adjust the number based on the number of CPU cores
+
